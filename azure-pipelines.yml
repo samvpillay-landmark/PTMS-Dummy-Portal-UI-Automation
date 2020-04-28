@@ -3,6 +3,10 @@
 # Add steps that publish symbols, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/apps/aspnet/build-aspnet-4
 
+trigger:
+- master
+- develop
+
 pool:
   vmImage: 'VS2017-Win2016'
 
@@ -12,16 +16,8 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
-
-- task: NodeTool@0
-  inputs:
-    versionSpec: '10.x'
-  displayName: 'Portal - Install Node.js'
-
-- bash: 'yarn install'
-  workingDirectory: '$(Build.SourcesDirectory)\'
-  displayName: 'Portal - install deps'
-
-- bash: 'yarn start & yarn cypress run'
-  workingDirectory: '$(Build.SourcesDirectory)\'
-  displayName: 'Portal Dummy - cypress tests'
+- script: |
+   echo "Empty build"
+  continueOnError: true
+  displayName: 'Dummy Command Line Script'
+  
