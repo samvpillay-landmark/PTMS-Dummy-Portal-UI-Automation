@@ -23,7 +23,7 @@ steps:
 
 # Archive files
 # Compress files into .7z, .tar.gz, or .zip
-- task: ArchiveFiles@2
+- task: ArchiveFiles@1
   inputs:
     rootFolderOrFile: '$(Build.BinariesDirectory)' 
     includeRootFolder: true 
@@ -33,4 +33,9 @@ steps:
     replaceExistingArchive: true 
     verbose: # Optional
     #quiet: # Optional
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)/$(Build.SourceBranchName).zip' 
+    ArtifactName: '$(Build.SourceBranchName).zip'
   
