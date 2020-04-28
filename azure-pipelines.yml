@@ -1,0 +1,27 @@
+# ASP.NET
+# Build and test ASP.NET projects.
+# Add steps that publish symbols, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/apps/aspnet/build-aspnet-4
+
+pool:
+  vmImage: 'VS2017-Win2016'
+
+variables:
+  solution: '**/*.sln'
+  buildPlatform: 'Any CPU'
+  buildConfiguration: 'Release'
+
+steps:
+
+- task: NodeTool@0
+  inputs:
+    versionSpec: '10.x'
+  displayName: 'Portal - Install Node.js'
+
+- bash: 'yarn install'
+  workingDirectory: '$(Build.SourcesDirectory)\'
+  displayName: 'Portal - install deps'
+
+- bash: 'yarn start & yarn cypress run'
+  workingDirectory: '$(Build.SourcesDirectory)\'
+  displayName: 'Portal Dummy - cypress tests'
