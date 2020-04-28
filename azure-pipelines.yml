@@ -17,7 +17,7 @@ variables:
 
 steps:
 - script: |
-   echo "Empty build"
+   echo "Archive for $(Build.ArtifactStagingDirectory)/$(Build.SourceBranchName).zip"
   continueOnError: true
   displayName: 'Dummy Command Line Script'
 
@@ -29,7 +29,7 @@ steps:
     includeRootFolder: true 
     archiveType: 'zip' # Options: zip, 7z, tar, wim
     #tarCompression: 'gz' # Optional. Options: gz, bz2, xz, none
-    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip' 
+    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.SourceBranchName).zip' 
     replaceExistingArchive: true 
     verbose: # Optional
     #quiet: # Optional
