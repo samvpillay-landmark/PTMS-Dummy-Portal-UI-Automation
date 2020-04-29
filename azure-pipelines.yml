@@ -17,7 +17,39 @@ variables:
 
 steps:
 - script: |
-   echo "Dummy Step"
+   echo "Archive for $(Build.ArtifactStagingDirectory)/$(Build.SourceBranchName).zip"
   continueOnError: true
   displayName: 'Dummy Command Line Script'
+  
+
+- task: NodeTool@0
+  inputs:
+    versionSpec: '10.x'
+  displayName: 'Portal - Install Node.js'
+
+- bash: 'yarn install'
+  workingDirectory: '$(Build.SourcesDirectory)\'
+  displayName: 'Portal - install deps'
+
+- bash: 'yarn start & yarn wait-on https://dev.optimusconveyancing.com & yarn cypress run'
+  workingDirectory: '$(Build.SourcesDirectory)\'
+  displayName: 'Portal - cypress tests'
+
+# Archive files
+# Compress files into .7z, .tar.gz, or .zip
+- task: ArchiveFiles@1
+  inputs:
+    rootFolderOrFile: '$(Build.SourcesDirectory)'
+    includeRootFolder: false 
+    archiveType: 'zip' # Options: zip, 7z, tar, wim
+    #tarCompression: 'gz' # Optional. Options: gz, bz2, xz, none
+    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.SourceBranchName).zip' 
+    replaceExistingArchive: true 
+    verbose: # Optional
+    #quiet: # Optional
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)/$(Build.SourceBranchName).zip' 
+    ArtifactName: '$(Build.SourceBranchName).zip'
   
