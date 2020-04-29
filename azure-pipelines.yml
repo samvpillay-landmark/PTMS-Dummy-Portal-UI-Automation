@@ -30,7 +30,7 @@ steps:
   workingDirectory: '$(Build.SourcesDirectory)\'
   displayName: 'Portal - install deps'
 
-- bash: 'npm start & npm cypress run'
+- bash: 'npm start & cypress run'
   workingDirectory: '$(Build.SourcesDirectory)\'
   displayName: 'Portal - cypress tests'
 
