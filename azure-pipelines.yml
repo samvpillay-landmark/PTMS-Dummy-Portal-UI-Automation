@@ -21,6 +21,19 @@ steps:
   continueOnError: true
   displayName: 'Dummy Command Line Script'
 
+- task: NodeTool@0
+  inputs:
+    versionSpec: '10.x'
+  displayName: 'Portal - Install Node.js'
+
+- bash: 'yarn install'
+  workingDirectory: '$(Build.SourcesDirectory)\'
+  displayName: 'Portal - install deps'
+
+- bash: 'npm start & npm run cy:run'
+  workingDirectory: '$(Build.SourcesDirectory)\'
+  displayName: 'Portal - cypress tests'
+
 # Archive files
 # Compress files into .7z, .tar.gz, or .zip
 - task: ArchiveFiles@1
