@@ -30,7 +30,7 @@ steps:
   workingDirectory: '$(Build.SourcesDirectory)\'
   displayName: 'Portal - install deps'
 
-- bash: 'npm start & npm run cy:run'
+- bash: 'yarn start & yarn wait-on https://dev.optimusconveyancing.com & yarn cypress run'
   workingDirectory: '$(Build.SourcesDirectory)\'
   displayName: 'Portal - cypress tests'
 
