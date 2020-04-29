@@ -26,11 +26,11 @@ steps:
     versionSpec: '10.x'
   displayName: 'Portal - Install Node.js'
 
-- bash: 'yarn install'
+- bash: 'npm install'
   workingDirectory: '$(Build.SourcesDirectory)\'
   displayName: 'Portal - install deps'
 
-- bash: 'yarn start & yarn wait-on https://dev.optimusconveyancing.com & yarn cypress run'
+- bash: 'npm start & npm cypress run'
   workingDirectory: '$(Build.SourcesDirectory)\'
   displayName: 'Portal - cypress tests'
 
