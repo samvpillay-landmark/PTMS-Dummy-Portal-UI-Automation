@@ -35,8 +35,8 @@ steps:
   workingDirectory: '$(Build.SourcesDirectory)\'
   displayName: 'Portal - cypress tests'
 
-# Archive files
-# Compress files into .7z, .tar.gz, or .zip
+## Archive files
+## Compress files into .7z, .tar.gz, or .zip
 - task: ArchiveFiles@1
   inputs:
     rootFolderOrFile: '$(Build.SourcesDirectory)'
@@ -50,6 +50,6 @@ steps:
 
 - task: PublishBuildArtifacts@1
   inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)/$(Build.SourceBranchName).zip' 
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)/' 
     ArtifactName: '$(Build.SourceBranchName).zip'
   
