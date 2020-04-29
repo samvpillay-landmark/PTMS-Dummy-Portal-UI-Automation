@@ -1,21 +1,23 @@
 {
-  "name": "cypress-optimus-portal",
+  "name": "ptms-dummy-portal-ui-automation",
   "version": "1.0.0",
+  "description": "PTMS-Portal-UI-Automation",
   "main": "index.js",
-  "scripts": {
-    "cypress:run": "cypress run",
-    "cypress:open": "cypress open"
-  },
-  "devDependencies": {
-    "@babel/core": "7.6.4",
-    "@babel/preset-env": "7.6.3",
-    "@bahmutov/add-typescript-to-cypress": "2.1.2",
-    "babel-loader": "8.0.6",
-    "cypress": "4.4.0",
-    "typescript": "3.6.4",
-    "webpack": "4.41.2"
-  },
   "dependencies": {
-    "cypress-plugin-retries": "^1.5.2"
-  }
+    "cypress": "^4.5.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/samvpillay/PTMS-Dummy-Portal-UI-Automation.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/samvpillay/PTMS-Dummy-Portal-UI-Automation/issues"
+  },
+  "homepage": "https://github.com/samvpillay/PTMS-Dummy-Portal-UI-Automation#readme"
 }
